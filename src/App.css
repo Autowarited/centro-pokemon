@@ -15,6 +15,7 @@ body {
   align-items: center;
   overflow-x: hidden;
   letter-spacing: 4px;
+  margin: 0;
 }
 
 .App {
@@ -103,7 +104,7 @@ h1 {
   width: 100%;
 }
 
-.input-contenedor input {
+.input-contenedor input, .input-contenedor select,.boton-seleccionar-especies {
   padding: 1rem;
   width: 300px;
   border-radius: 10px;
@@ -166,7 +167,7 @@ h1 {
   color: #ed5564;
 }
 
-.boton-enviar {
+.boton-enviar, .btn-close-message {
   padding: 0.6rem 3rem;
   border-radius: 10px;
   background-color: #ed5564;
@@ -179,7 +180,7 @@ h1 {
   align-self: flex-end;
 }
 
-.boton-enviar:hover {
+.boton-enviar:hover, .btn-close-message:hover {
   box-shadow: none;
   cursor: pointer;
 }
@@ -208,4 +209,127 @@ h1 {
 
 .volver {
   justify-self: end;
+}
+
+.popup-especie {
+  width: 30vw;
+  height: 60vh;
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: whitesmoke;
+  border-radius: 12px;
+  border: 2px solid lightgrey;
+  box-shadow: 3px 3px 3px 3px darkgray;
+}
+
+.contenedor-especies {
+  width: 100%;
+  margin-top: 3rem;
+}
+
+.boton-seleccionar-especies {
+  background-color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.boton-seleccionar-especies:hover {
+  background-color: lightgray;
+}
+
+.botones-especie {
+  margin: 0.5rem;
+  padding: 0.6rem;
+  border-radius: 10px;
+  background-color: #ed5564;
+  color: whitesmoke;
+  cursor: pointer;
+  border: 2px solid #ed5564;
+  box-shadow: 2px 2px 2px 2px darkgray;
+}
+
+.botones-especie:hover {
+  box-shadow: none;
+}
+
+.paginador {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.boton-anterior,
+.boton-siguiente {
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  background-color: whitesmoke;
+  color: #ed5564;
+  cursor: pointer;
+  border: 2px solid #ed5564;
+  box-shadow: 2px 2px 2px 2px darkgray;
+}
+
+.boton-anterior:hover,
+.boton-siguiente:hover {
+  background-color: #ed5564;
+  color: whitesmoke;
+  box-shadow: none;
+}
+
+.boton-anterior:disabled, .boton-siguiente:disabled{
+  background-color: rgb(228, 226, 226);
+}
+
+.boton-anterior:disabled:hover, .boton-siguiente:disabled:hover{
+  background-color: rgb(228, 226, 226);
+  color: #ed5564;
+  cursor: not-allowed;
+  box-shadow: 2px 2px 2px 2px darkgray;
+}
+
+.boton-anterior {
+  margin-right: 1rem;
+}
+
+.loader, .result-message{
+  align-items: center;
+  background-color: rgba(49, 49, 49, 0.2);
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+}
+
+.spinner{
+  color: rgba(49, 49, 49);
+  font-size: 7rem;
+  animation: App-logo-spin infinite 5s linear;
+}
+
+.message-box{
+  background-color: white;
+  border-radius: .7rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 30%;
+  height: 30%;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.btn-close-message{
+  align-self: center;
+  font-size: 1.3rem;
+  font-weight: 100;
+  letter-spacing: 4px;
+  cursor: pointer;
 }

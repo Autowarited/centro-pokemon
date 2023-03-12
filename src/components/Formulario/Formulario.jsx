@@ -1,19 +1,59 @@
-import React from "react";
+import React, {useContext, useState} from "react";
 import { Link } from "react-router-dom";
+import {useQuery, useMutation} from 'react-query';
 import pokebola from "../../assets/pokebola.png";
 import entrenador from "../../assets/entrenador.png";
 import pikachu from "../../assets/pikachu.png";
 import Input from "../Input/Input";
 import Detalle from "./Detalle";
+import Select from "../Select/Select";
+import {getTypes} from '../../services/pokemonService';
+import { ContextoFormulario } from "../../context/ContextoFormulario";
+import { addPokemon } from "../../services/pokemonService";
+import { initialState } from "../../context/FormularioReducer";
+import InputEspecie from "../InputEspecie/InputEspecie";
+import {ImSpinner3} from 'react-icons/im';
 
-// En este componente tenemos nuestro formulario y dentro de él
-// tenemos los componentes que necesitan consumir nuestro estado.
-// Recuerda cual es el paso que debemos tomar para que nuestros
-// componentes puedan consumir un estado global.
 
 const Formulario = () => {
+  const [showMsg, setShowMsg] = useState(false);
+  const [formData, dispatch] = useContext(ContextoFormulario);
+  const {mutate, isSuccess, isError: error, isLoading: sendingData, reset} = useMutation(addPokemon, 
+    {onSuccess:() => {
+      dispatch({type: "ACTUALIZAR_POKEMON", payload: initialState.pokemon});
+      dispatch({type: "ACTUALIZAR_ENTRENADOR", payload: initialState.entrenador});
+      setShowMsg(true);
+    }
+    });
+    const {data, isLoading, isError} = useQuery(["PokemonTypes"], getTypes, 
+        {retry:false}
+    );
+
+  /**
+   * Maneja el llamado al endpoint que se encarga de guardar los mismos en el servidor
+   * @param {Event} e 
+   */
+  const submitHandler = () => {
+    mutate(formData);
+  }
+
+  const closeMessageHandler = () => {
+    setShowMsg(false);
+  }
+  
+
   return (
     <>
+      {sendingData && 
+      <div className="loader">
+        <ImSpinner3 className="spinner"/>
+      </div>}
+      {showMsg && <div className="result-message">
+        <div className="message-box">
+          <p>{error ? "No se pudo guardar su turno, intente de nuevo más tarde": "Turno registrado correctamente, ¡Muchas gracias!"}</p>
+          <button type="button" className="btn-close-message" onClick={closeMessageHandler}>Cerrar</button>
+        </div>
+      </div>}
       <header className="form-header">
         <div>
           <img src={pokebola} alt="pokebola" />
@@ -40,19 +80,24 @@ const Formulario = () => {
                 <img src={entrenador} alt="entrenador" />
                 <span>ENTRENADOR</span>
               </p>
-              <Input name="nombre" label="Nombre" />
-              <Input name="apellido" label="Apellido" />
-              <Input name="email" label="Email" type="email" />
+              <Input name="nombre" label="Nombre" isSuccess={isSuccess} reset={reset}/>
+              <Input name="apellido" label="Apellido" isSuccess={isSuccess} reset={reset}/>
+              <Input name="email" label="Email" type="email" isSuccess={isSuccess} reset={reset}/>
             </div>
             <div>
               <p className="nombre-seccion">
                 <img src={pikachu} alt="pikachu" />
                 <span>POKEMON</span>
               </p>
-              <Input name="nombrePokemon" label="Nombre" />
+              <Input name="nombrePokemon" label="Nombre" isPokemon={true} isSuccess={isSuccess} reset={reset}/>
+              <Select name="tipoPokemon" label="Tipo" isPokemon={true} optionList={data} disabled={isLoading || isError} isSuccess={isSuccess} reset={reset}/>
+              <Input name="elementoPokemon" label="Elemento" isPokemon={true} isSuccess={isSuccess} reset={reset}/>
+              <InputEspecie name="especiePokemon" label="Especie" />
+              <Input name="alturaPokemon" label="Altura" isPokemon={true} isSuccess={isSuccess} reset={reset}/>
+              <Input name="edadPokemon" label="Edad" isPokemon={true} isSuccess={isSuccess} reset={reset}/>
             </div>
           </div>
-          <Detalle />
+          <Detalle submit={submitHandler} />
         </div>
       </div>
     </>

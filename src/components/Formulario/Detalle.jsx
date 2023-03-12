@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ContextoFormulario } from "../../context/ContextoFormulario";
+import PropTypes  from "prop-types";
 
-const Detalle = () => {
-  // Aqui deberíamos obtener los datos del formulario para poder mostrarlo en
-  // la vista previa.
+const Detalle = ({submit}) => {
+  const [formData] = useContext(ContextoFormulario);
+
+  /**
+   * Maneja el envío de los datos del formulario al endpoint que se encarga de guardar los mismos en el servidor
+   * @param {Event} e 
+   */
+  const submitHandler = (e) => {
+    e.preventDefault();
+    submit();
+  }
 
   return (
     <div className="detalle-formulario">
@@ -12,20 +22,26 @@ const Detalle = () => {
       <section className="datos-cliente">
         <h4>Datos del Entrenador</h4>
         <div className="fila">
-          <p>Nombre:</p>
-          <p>Apellido:</p>
-          <p>Email:</p>
+          <p>Nombre: {formData.entrenador.nombre}</p>
+          <p>Apellido: {formData.entrenador.apellido}</p>
+          <p>Email: {formData.entrenador.email}</p>
         </div>
       </section>
       <section className="datos-cliente">
         <h4>Datos del Pokémon</h4>
         <div className="fila">
-          <p>Nombre:</p>
+          <p>Nombre: {formData.pokemon.nombrePokemon}</p>
+          <p>Tipo: {formData.pokemon.tipoPokemon}</p>
+          <p>Elemento: {formData.pokemon.elementoPokemon}</p>
+          <p>Especie: {formData.pokemon.especiePokemon}</p>
+          <p>Altura: {formData.pokemon.alturaPokemon}</p>
+          <p>Edad: {formData.pokemon.edadPokemon}</p>
         </div>
       </section>
       <button
         className="boton-enviar"
-        onClick={() => alert("Solicitud enviada :)")}
+        type="submit"
+        onClick={submitHandler}
       >
         Enviar Solicitud
       </button>
@@ -34,3 +50,7 @@ const Detalle = () => {
 };
 
 export default Detalle;
+
+Detalle.propTypes = {
+  submit: PropTypes.func,
+}

@@ -4,11 +4,21 @@ import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import {ContextoProvider} from './context/ContextoFormulario';
+import { QueryClientProvider, QueryClient } from "react-query";
+import { ReactQueryDevtools } from 'react-query/devtools'
+
+const queryClient = new QueryClient();
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <ContextoProvider>
+        <QueryClientProvider client={queryClient}>
+          <App />
+          <ReactQueryDevtools initialIsOpen={false} />
+        </QueryClientProvider>
+      </ContextoProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")

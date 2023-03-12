@@ -1,30 +1,43 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
+import {ContextoFormulario} from '../../context/ContextoFormulario';
+import PropTypes  from "prop-types";
 
-const Input = ({ name, label, type = "text" }) => {
-  // Aqui deberíamos acceder al estado global para poder obtener los datos
-  // del formulario y una manera de actualizar los mismos.
-
-  // También, utilizaremos un estado local para manejar el estado del input.
-
+const Input = ({ name, label, type = "text", isPokemon = false, isSuccess, reset }) => {
+  const [formData, handleInputBlur] = useContext(ContextoFormulario);
+  const [inputData, setInputData] = useState(formData[name] || "");
+  /**
+   * Maneja los cambios en el imput
+   * @param {Event} e 
+   */
   const onChange = (e) => {
-    // Aquí deberíamos actualizar el estado local del input.
+    setInputData(e.target.value);
   };
 
+  /**
+   * Maneja la actualización del estado global al salir del input
+   * @param {Event} e 
+   */
   const onBlur = (e) => {
     e.preventDefault();
 
-    // Aqui deberíamos actualizar el estado global con los datos de
-    // cada input.
-    // TIP: Podemos utilizar el nombre de cada input para guardar
-    // los datos en el estado global usando una notación de { clave: valor }
+    handleInputBlur({type: isPokemon ? "ACTUALIZAR_POKEMON": "ACTUALIZAR_ENTRENADOR",
+                    payload: {[name]: inputData}});
+    
   };
+
+  useEffect(() => {
+    if(isSuccess){
+      setInputData("");
+      reset();
+    }
+  }, [isSuccess, reset])
 
   return (
     <div className="input-contenedor">
       <label htmlFor={name}>{label}</label>
       <input
         type={type}
-        value={"Siempre tengo el mismo valor XD"}
+        value={inputData}
         id={name}
         onChange={onChange}
         onBlur={onBlur}
@@ -34,3 +47,12 @@ const Input = ({ name, label, type = "text" }) => {
 };
 
 export default Input;
+
+Input.propTypes = {
+  name: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  type: PropTypes.string, 
+  isPokemon: PropTypes.bool,
+  isSuccess: PropTypes.bool,
+  reset: PropTypes.func
+}

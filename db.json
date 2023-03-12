@@ -1,0 +1,173 @@
+{
+  "pokemones": [
+    {
+      "id": 1,
+      "entrenador": {
+        "nombre": "Ash",
+        "apellido": "Ketchum",
+        "email": "ash@ketchum.com"
+      },
+      "pokemon": {
+        "nombrePokemon": "Pikachu",
+        "tipoPokemon": "electric",
+        "elementoPokemon": "electricidad",
+        "alturaPokemon": "75cm",
+        "edadPokemon": "3 años"
+      }
+    },
+    {
+      "entrenador": {
+        "nombre": "James",
+        "apellido": "Mememes",
+        "email": "james@mememes.com"
+      },
+      "pokemon": {
+        "nombrePokemon": "Meowth",
+        "tipoPokemon": "normal",
+        "elementoPokemon": "Normal",
+        "alturaPokemon": "87cm",
+        "edadPokemon": "5 años"
+      },
+      "id": 2
+    },
+    {
+      "entrenador": {
+        "nombre": "Jessy",
+        "apellido": "Rocket",
+        "email": "jessy@rocket.com"
+      },
+      "pokemon": {
+        "nombrePokemon": "Eckans",
+        "tipoPokemon": "poison",
+        "elementoPokemon": "Veneno",
+        "alturaPokemon": "150cm",
+        "edadPokemon": "4 años"
+      },
+      "id": 3
+    },
+    {
+      "entrenador": {
+        "nombre": "Misty",
+        "apellido": "Water",
+        "email": "misty@water.com"
+      },
+      "pokemon": {
+        "nombrePokemon": "Staryu",
+        "tipoPokemon": "water",
+        "elementoPokemon": "Agua",
+        "alturaPokemon": "67cm",
+        "edadPokemon": "2 años"
+      },
+      "id": 4
+    },
+    {
+      "entrenador": {
+        "nombre": "Brook",
+        "apellido": "Philips",
+        "email": "brook.philips@elmejor.com"
+      },
+      "pokemon": {
+        "nombrePokemon": "Onix",
+        "tipoPokemon": "rock",
+        "elementoPokemon": "Roca tierra",
+        "alturaPokemon": "210cm",
+        "edadPokemon": "17 años"
+      },
+      "id": 5
+    },
+    {
+      "entrenador": {
+        "nombre": "Ash",
+        "apellido": "Ketchum",
+        "email": "ash@ketchum.com"
+      },
+      "pokemon": {
+        "nombrePokemon": "Charizard",
+        "tipoPokemon": "fire",
+        "elementoPokemon": "Fuego volador",
+        "alturaPokemon": "237cm",
+        "edadPokemon": "3 años"
+      },
+      "id": 6
+    },
+    {
+      "entrenador": {
+        "nombre": "James",
+        "apellido": "Mememes",
+        "email": "james@mememes.com"
+      },
+      "pokemon": {
+        "nombrePokemon": "Wobufet",
+        "tipoPokemon": "psychic",
+        "elementoPokemon": "Psiquico",
+        "alturaPokemon": "83cm",
+        "edadPokemon": "2 años"
+      },
+      "id": 7
+    },
+    {
+      "entrenador": {
+        "nombre": "Ash",
+        "apellido": "Ketchum",
+        "email": "ash@ketchum.com"
+      },
+      "pokemon": {
+        "nombrePokemon": "Lapras",
+        "tipoPokemon": "water",
+        "elementoPokemon": "Agua hielo",
+        "especiePokemon": "lapras",
+        "alturaPokemon": "217cm",
+        "edadPokemon": "1 año"
+      },
+      "id": 8
+    },
+    {
+      "entrenador": {
+        "nombre": "Ash",
+        "apellido": "Ketchum",
+        "email": "ash@ketchum.com"
+      },
+      "pokemon": {
+        "nombrePokemon": "Bulbasaur",
+        "tipoPokemon": "grass",
+        "elementoPokemon": "Planta",
+        "especiePokemon": "bulbasaur",
+        "alturaPokemon": "45cm",
+        "edadPokemon": "6 años"
+      },
+      "id": 9
+    },
+    {
+      "entrenador": {
+        "nombre": "Ash",
+        "apellido": "Ketchum",
+        "email": "ash@ketchum.com"
+      },
+      "pokemon": {
+        "nombrePokemon": "Ivysaur",
+        "tipoPokemon": "grass",
+        "elementoPokemon": "Planta",
+        "especiePokemon": "ivysaur",
+        "alturaPokemon": "87cm",
+        "edadPokemon": "3 años"
+      },
+      "id": 10
+    },
+    {
+      "entrenador": {
+        "nombre": "Misty",
+        "apellido": "Water",
+        "email": "misty@water.com"
+      },
+      "pokemon": {
+        "nombrePokemon": "Wartortle",
+        "tipoPokemon": "water",
+        "elementoPokemon": "Agua",
+        "especiePokemon": "wartortle",
+        "alturaPokemon": "94cm",
+        "edadPokemon": "7 años"
+      },
+      "id": 11
+    }
+  ]
+}
